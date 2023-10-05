@@ -18,6 +18,10 @@ struct ContentView: View {
             }
             Text("this is description")
                 .bold()
+            
+            Button("Send", systemImage: "apple.logo") {
+            }.buttonStyle(.bordered)
+            
         }
         .padding()
     }
