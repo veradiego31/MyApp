@@ -9,21 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            HStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, App!")
+        Text(Date(timeIntervalSince1970: 1696563619), style: .timer)
+            .font(.system(size: 30, weight: .semibold, design: .rounded))
+            .monospacedDigit()
+            .contentTransition(.numericText())
+            .transaction { transaction in
+                transaction.animation = .snappy
             }
-            Text("this is description")
-                .bold()
-            
-            Button("Send", systemImage: "apple.logo") {
-            }.buttonStyle(.bordered)
-            
-        }
-        .padding()
     }
 }
 
