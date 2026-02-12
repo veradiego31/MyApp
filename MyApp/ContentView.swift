@@ -4,19 +4,18 @@ struct ContentView: View {
     @StateObject private var viewModel = CountdownViewModel()
     @Environment(\.scenePhase) private var scenePhase
     @State private var animateGradient = false
+    private let colorsA: [Color] = [
+        .indigo, .cyan, .mint,
+        .purple, .indigo, .cyan,
+        .pink, .purple, .indigo
+    ]
+    private let colorsB: [Color] = [
+        .pink, .purple, .indigo,
+        .cyan, .mint, .purple,
+        .indigo, .cyan, .mint
+    ]
 
     var body: some View {
-        let colorsA: [Color] = [
-            .indigo, .cyan, .mint,
-            .purple, .indigo, .cyan,
-            .pink, .purple, .indigo
-        ]
-        let colorsB: [Color] = [
-            .pink, .purple, .indigo,
-            .cyan, .mint, .purple,
-            .indigo, .cyan, .mint
-        ]
-
         ZStack {
             MeshGradient(
                 width: 3, height: 3,
@@ -29,9 +28,7 @@ struct ContentView: View {
             )
             .ignoresSafeArea()
             .onAppear {
-                withAnimation(.easeInOut(duration: 6).repeatForever(autoreverses: true)) {
-                    animateGradient = true
-                }
+                startGradientAnimationIfNeeded()
             }
 
             Group {
@@ -39,13 +36,11 @@ struct ContentView: View {
                     CountdownView(
                         event: event,
                         timeComponents: viewModel.timeComponents,
-                        onEdit: { viewModel.isShowingEventForm = true },
+                        onEdit: showEventForm,
                         onDelete: { viewModel.deleteEvent() }
                     )
                 } else {
-                    EmptyStateView {
-                        viewModel.isShowingEventForm = true
-                    }
+                    EmptyStateView(onSetEvent: showEventForm)
                 }
             }
         }
@@ -55,9 +50,27 @@ struct ContentView: View {
             }
         }
         .onChange(of: scenePhase) { _, newPhase in
-            if newPhase == .active {
+            switch newPhase {
+            case .active:
                 viewModel.refreshOnForeground()
+                startGradientAnimationIfNeeded()
+            case .inactive, .background:
+                viewModel.pauseTimer()
+                animateGradient = false
+            @unknown default:
+                break
             }
+        }
+    }
+
+    private func showEventForm() {
+        viewModel.isShowingEventForm = true
+    }
+
+    private func startGradientAnimationIfNeeded() {
+        guard !animateGradient else { return }
+        withAnimation(.easeInOut(duration: 6).repeatForever(autoreverses: true)) {
+            animateGradient = true
         }
     }
 }

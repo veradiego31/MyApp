@@ -54,8 +54,8 @@ struct FlipClockView: View {
     private func digitGroup(digits: [Int], label: String, digitSize: CGFloat) -> some View {
         VStack(spacing: 4) {
             HStack(spacing: 2) {
-                ForEach(Array(digits.enumerated()), id: \.offset) { _, digit in
-                    FlipDigitView(digit: digit, size: digitSize)
+                ForEach(digits.indices, id: \.self) { index in
+                    FlipDigitView(digit: digits[index], size: digitSize)
                 }
             }
             Text(label)

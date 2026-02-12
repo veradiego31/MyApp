@@ -38,6 +38,10 @@ final class CountdownViewModel: ObservableObject {
         startTimerIfNeeded()
     }
 
+    func pauseTimer() {
+        stopTimer()
+    }
+
     // MARK: - Private
 
     private func loadEvent() {
@@ -61,7 +65,7 @@ final class CountdownViewModel: ObservableObject {
         stopTimer()
         guard let event, !event.isExpired else { return }
 
-        timerCancellable = Timer.publish(every: 1, on: .main, in: .common)
+        timerCancellable = Timer.publish(every: 1, on: .main, in: .default)
             .autoconnect()
             .sink { [weak self] _ in
                 self?.tick()
