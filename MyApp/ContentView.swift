@@ -1,29 +1,34 @@
-//
-//  ContentView.swift
-//  MyApp
-//
-//  Created by Diego Vera on 2023-09-26.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = CountdownViewModel()
+    @Environment(\.scenePhase) private var scenePhase
+
     var body: some View {
-        VStack {
-            HStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, App!")
+        Group {
+            if let event = viewModel.event {
+                CountdownView(
+                    event: event,
+                    timeComponents: viewModel.timeComponents,
+                    onEdit: { viewModel.isShowingEventForm = true },
+                    onDelete: { viewModel.deleteEvent() }
+                )
+            } else {
+                EmptyStateView {
+                    viewModel.isShowingEventForm = true
+                }
             }
-            Text("this is description")
-                .bold()
-            
-            Button("Send", systemImage: "apple.logo") {
-            }.buttonStyle(.bordered)
-            
         }
-        .padding()
+        .sheet(isPresented: $viewModel.isShowingEventForm) {
+            EventFormView(existing: viewModel.event) { event in
+                viewModel.saveEvent(event)
+            }
+        }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                viewModel.refreshOnForeground()
+            }
+        }
     }
 }
 
