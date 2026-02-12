@@ -6,23 +6,30 @@ struct ContentView: View {
     @State private var animateGradient = false
 
     var body: some View {
+        let colorsA: [Color] = [
+            .indigo, .cyan, .mint,
+            .purple, .indigo, .cyan,
+            .pink, .purple, .indigo
+        ]
+        let colorsB: [Color] = [
+            .pink, .purple, .indigo,
+            .cyan, .mint, .purple,
+            .indigo, .cyan, .mint
+        ]
+
         ZStack {
             MeshGradient(
                 width: 3, height: 3,
                 points: [
                     [0.0, 0.0], [0.5, 0.0], [1.0, 0.0],
-                    [0.0, 0.5], [animateGradient ? 0.6 : 0.4, 0.5], [1.0, 0.5],
+                    [0.0, 0.5], [0.5, 0.5], [1.0, 0.5],
                     [0.0, 1.0], [0.5, 1.0], [1.0, 1.0]
                 ],
-                colors: [
-                    .indigo, .cyan, .mint,
-                    .purple, .indigo, .cyan,
-                    .pink, .purple, .indigo
-                ]
+                colors: animateGradient ? colorsB : colorsA
             )
             .ignoresSafeArea()
             .onAppear {
-                withAnimation(.easeInOut(duration: 4).repeatForever(autoreverses: true)) {
+                withAnimation(.easeInOut(duration: 6).repeatForever(autoreverses: true)) {
                     animateGradient = true
                 }
             }
