@@ -16,6 +16,7 @@
 		52DBDF212AC3B93A0049D966 /* MyAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DBDF202AC3B93A0049D966 /* MyAppUITestsLaunchTests.swift */; };
 		AABB00010000000000000001 /* CountdownEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB00110000000000000001 /* CountdownEvent.swift */; };
 		AABB00020000000000000002 /* TimeComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB00120000000000000002 /* TimeComponents.swift */; };
+		AABB00030000000000000003 /* CountdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB00130000000000000003 /* CountdownViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		52DBDF202AC3B93A0049D966 /* MyAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AABB00110000000000000001 /* CountdownEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownEvent.swift; sourceTree = "<group>"; };
 		AABB00120000000000000002 /* TimeComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeComponents.swift; sourceTree = "<group>"; };
+		AABB00130000000000000003 /* CountdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				52DBDF032AC3B9380049D966 /* MyAppApp.swift */,
 				52DBDF052AC3B9380049D966 /* ContentView.swift */,
 				CCBB00010000000000000001 /* Models */,
+				CCBB00020000000000000002 /* ViewModels */,
 				CCBB00040000000000000004 /* Utilities */,
 				52DBDF072AC3B93A0049D966 /* Assets.xcassets */,
 				52DBDF092AC3B93A0049D966 /* Preview Content */,
@@ -114,6 +117,14 @@
 				AABB00110000000000000001 /* CountdownEvent.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CCBB00020000000000000002 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AABB00130000000000000003 /* CountdownViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		CCBB00040000000000000004 /* Utilities */ = {
@@ -283,6 +294,7 @@
 				52DBDF042AC3B9380049D966 /* MyAppApp.swift in Sources */,
 				AABB00010000000000000001 /* CountdownEvent.swift in Sources */,
 				AABB00020000000000000002 /* TimeComponents.swift in Sources */,
+				AABB00030000000000000003 /* CountdownViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
