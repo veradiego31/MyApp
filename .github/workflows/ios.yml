@@ -26,17 +26,44 @@ jobs:
           echo Using default scheme: $default
       - name: Resolve simulator destination
         run: |
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
+          selected=$(xcrun simctl list devices available -j | ruby -rjson -e '
+            data = JSON.parse(STDIN.read)
+            candidates = []
+            data.fetch("devices", {}).each_value do |devices|
+              devices.each do |device|
+                next unless device["isAvailable"]
+                name = device["name"].to_s
+                next unless name.start_with?("iPhone")
+                candidates << [name, device["udid"]]
+              end
+            end
 
-          if [ -f default ]; then scheme=$(cat default); else
-            scheme_list=$(xcodebuild -list -json | tr -d "\n")
-            scheme=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
+            preferred = ["iPhone 16", "iPhone 15", "iPhone 14"]
+            chosen = nil
+            preferred.each do |name|
+              chosen = candidates.find { |candidate| candidate[0] == name }
+              break if chosen
+            end
+            chosen ||= candidates.first
+
+            puts "#{chosen[0]}|#{chosen[1]}" if chosen
+          ')
+
+          if [ -z "$selected" ]; then
+            echo "No available iPhone simulator found on this runner."
+            echo "Installed runtimes:"
+            xcrun simctl list runtimes
+            exit 1
           fi
 
-          show_destinations=$(xcodebuild -showdestinations -scheme "$scheme" -"$filetype_parameter" "$file_to_build")
+          device_name=$(echo "$selected" | cut -d'|' -f1)
+          device_udid=$(echo "$selected" | cut -d'|' -f2)
 
-          destination="platform=iOS Simulator,name=Any iOS Simulator Device"
+          echo "Selected simulator: $device_name ($device_udid)"
+          xcrun simctl boot "$device_udid" || true
+          xcrun simctl bootstatus "$device_udid" -b
+
+          destination="platform=iOS Simulator,id=$device_udid"
           echo "Using destination: $destination"
           echo "destination=$destination" >> "$GITHUB_ENV"
       - name: Build
