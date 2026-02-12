@@ -61,7 +61,7 @@ struct FlipClockView: View {
             Text(label)
                 .font(.caption2)
                 .fontWeight(.semibold)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.white.opacity(0.8))
                 .tracking(1)
         }
     }
@@ -70,7 +70,7 @@ struct FlipClockView: View {
         VStack(spacing: 4) {
             Text(":")
                 .font(.system(size: size * 0.4, weight: .bold, design: .rounded))
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.white.opacity(0.8))
                 .offset(y: -2)
             Text(" ")
                 .font(.caption2)

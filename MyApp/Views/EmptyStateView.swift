@@ -9,15 +9,16 @@ struct EmptyStateView: View {
 
             Image(systemName: "clock.badge.questionmark")
                 .font(.system(size: 64))
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.white.opacity(0.7))
 
             VStack(spacing: 8) {
                 Text("No Event Set")
                     .font(.title2)
                     .fontWeight(.bold)
+                    .foregroundStyle(.white)
                 Text("Create a countdown to something exciting!")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.white.opacity(0.7))
                     .multilineTextAlignment(.center)
             }
 
@@ -29,6 +30,8 @@ struct EmptyStateView: View {
                     .frame(maxWidth: 220)
             }
             .buttonStyle(.borderedProminent)
+            .tint(.white.opacity(0.25))
+            .foregroundStyle(.white)
             .controlSize(.large)
 
             Spacer()
@@ -38,5 +41,8 @@ struct EmptyStateView: View {
 }
 
 #Preview {
-    EmptyStateView(onSetEvent: {})
+    ZStack {
+        Color.indigo.ignoresSafeArea()
+        EmptyStateView(onSetEvent: {})
+    }
 }
