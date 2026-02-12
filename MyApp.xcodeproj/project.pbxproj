@@ -19,6 +19,9 @@
 		AABB00030000000000000003 /* CountdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB00130000000000000003 /* CountdownViewModel.swift */; };
 		AABB00040000000000000004 /* FlipDigitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB00140000000000000004 /* FlipDigitView.swift */; };
 		AABB00050000000000000005 /* FlipClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB00150000000000000005 /* FlipClockView.swift */; };
+		AABB00060000000000000006 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB00160000000000000006 /* CountdownView.swift */; };
+		AABB00070000000000000007 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB00170000000000000007 /* EmptyStateView.swift */; };
+		AABB00080000000000000008 /* EventFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB00180000000000000008 /* EventFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		AABB00130000000000000003 /* CountdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewModel.swift; sourceTree = "<group>"; };
 		AABB00140000000000000004 /* FlipDigitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipDigitView.swift; sourceTree = "<group>"; };
 		AABB00150000000000000005 /* FlipClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipClockView.swift; sourceTree = "<group>"; };
+		AABB00160000000000000006 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		AABB00170000000000000007 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		AABB00180000000000000008 /* EventFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,9 @@
 			children = (
 				AABB00140000000000000004 /* FlipDigitView.swift */,
 				AABB00150000000000000005 /* FlipClockView.swift */,
+				AABB00160000000000000006 /* CountdownView.swift */,
+				AABB00170000000000000007 /* EmptyStateView.swift */,
+				AABB00180000000000000008 /* EventFormView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,6 +320,9 @@
 				AABB00030000000000000003 /* CountdownViewModel.swift in Sources */,
 				AABB00040000000000000004 /* FlipDigitView.swift in Sources */,
 				AABB00050000000000000005 /* FlipClockView.swift in Sources */,
+				AABB00060000000000000006 /* CountdownView.swift in Sources */,
+				AABB00070000000000000007 /* EmptyStateView.swift in Sources */,
+				AABB00080000000000000008 /* EventFormView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
