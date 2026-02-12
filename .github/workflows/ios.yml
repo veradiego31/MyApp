@@ -36,24 +36,7 @@ jobs:
 
           show_destinations=$(xcodebuild -showdestinations -scheme "$scheme" -"$filetype_parameter" "$file_to_build")
 
-          destination=""
-          for candidate in \
-            "platform=iOS Simulator,OS=latest,name=iPhone 16" \
-            "platform=iOS Simulator,OS=latest,name=iPhone 15" \
-            "platform=iOS Simulator,OS=latest,name=iPhone 14"; do
-            name=$(echo "$candidate" | sed -E 's/.*name=//')
-            if echo "$show_destinations" | grep -q "$name"; then
-              destination="$candidate"
-              break
-            fi
-          done
-
-          if [ -z "$destination" ]; then
-            echo "No preferred simulator found in available destinations"
-            echo "$show_destinations"
-            exit 1
-          fi
-
+          destination="platform=iOS Simulator,name=Any iOS Simulator Device"
           echo "Using destination: $destination"
           echo "destination=$destination" >> "$GITHUB_ENV"
       - name: Build
