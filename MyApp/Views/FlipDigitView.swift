@@ -55,13 +55,13 @@ struct FlipDigitView: View {
             previousDigit = currentDigit
             currentDigit = newValue
 
-            // Reset flap positions
+            // Reset flap positions (avoid exactly ±90° to prevent singular projection matrix)
             topFlapAngle = 0
-            bottomFlapAngle = -90
+            bottomFlapAngle = -89.9
 
             // Phase 1: Top flap folds down (old digit disappears)
             withAnimation(.easeIn(duration: 0.2)) {
-                topFlapAngle = -90
+                topFlapAngle = -89.9
             } completion: {
                 // Phase 2: Bottom flap unfolds (new digit appears)
                 withAnimation(.easeOut(duration: 0.2)) {

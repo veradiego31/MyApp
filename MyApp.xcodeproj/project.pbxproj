@@ -122,6 +122,31 @@
 			path = MyApp;
 			sourceTree = "<group>";
 		};
+		52DBDF092AC3B93A0049D966 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				52DBDF0A2AC3B93A0049D966 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		52DBDF132AC3B93A0049D966 /* MyAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				52DBDF142AC3B93A0049D966 /* MyAppTests.swift */,
+			);
+			path = MyAppTests;
+			sourceTree = "<group>";
+		};
+		52DBDF1D2AC3B93A0049D966 /* MyAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				52DBDF1E2AC3B93A0049D966 /* MyAppUITests.swift */,
+				52DBDF202AC3B93A0049D966 /* MyAppUITestsLaunchTests.swift */,
+			);
+			path = MyAppUITests;
+			sourceTree = "<group>";
+		};
 		CCBB00010000000000000001 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,31 +181,6 @@
 				AABB00120000000000000002 /* TimeComponents.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		52DBDF092AC3B93A0049D966 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				52DBDF0A2AC3B93A0049D966 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		52DBDF132AC3B93A0049D966 /* MyAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				52DBDF142AC3B93A0049D966 /* MyAppTests.swift */,
-			);
-			path = MyAppTests;
-			sourceTree = "<group>";
-		};
-		52DBDF1D2AC3B93A0049D966 /* MyAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				52DBDF1E2AC3B93A0049D966 /* MyAppUITests.swift */,
-				52DBDF202AC3B93A0049D966 /* MyAppUITestsLaunchTests.swift */,
-			);
-			path = MyAppUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -483,11 +483,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyApp/Preview Content\"";
+				DEVELOPMENT_TEAM = W875VS9ZTY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dafa Countdown";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -511,11 +515,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyApp/Preview Content\"";
+				DEVELOPMENT_TEAM = W875VS9ZTY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dafa Countdown";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
